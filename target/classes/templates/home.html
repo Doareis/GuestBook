@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Guest List</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+          rel="stylesheet"/>
+</head>
+<body>
+    <h1>Hello, welcome to your home page</h1>
+    <ol>
+        <li><a th:href="@{/eventList}">Event list</a></li>
+        <li><a th:href="@{/logout}">Log out</a></li>
+    </ol>
+</body>
+</html>
