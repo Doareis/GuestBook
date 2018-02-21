@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-    @Query("from Event e where e.user = ?1")
-    List<Event> findByUser(User user);
+    @Query("from Event e where upper(e.user.username) = upper(?1)")
+    List<Event> findAllBy(String username);
 
 }

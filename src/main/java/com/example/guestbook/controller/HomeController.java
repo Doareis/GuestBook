@@ -2,6 +2,7 @@ package com.example.guestbook.controller;
 
 import com.example.guestbook.model.User;
 import com.example.guestbook.repository.EventRepository;
+import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -18,9 +19,9 @@ public class HomeController {
     private EventRepository repository;
 
     @RequestMapping(name = "/home")
-    public String home(Model model, User user) {
-        model.addAttribute("events", repository.findAll());
-        //model.addAttribute("events", repository.findByUser(user));
+    public String home(Model model, Principal principal) {
+        model.addAttribute("events", repository.findAllBy(principal.getName()));
+        //model.addAttribute("events", repository.findAll());
         return "home";
     }
 
