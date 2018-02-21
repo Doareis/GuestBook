@@ -1,16 +1,19 @@
 package com.example.guestbook.controller;
 
+import com.example.guestbook.model.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by douglasreis on 07/12/17.
+ * Created by douglas.reis on 07/12/17.
  */
 @Controller
 public class LoginController {
 
     @RequestMapping("/login")
-    public String showLoginForm(){
+    public String showLoginForm(Model model){
+        model.addAttribute("user", new User());
         return "login";
     }
 

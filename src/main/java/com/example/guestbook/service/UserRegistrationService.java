@@ -28,7 +28,7 @@ public class UserRegistrationService {
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
         setBCryptPassword(user, userDTO.getPassword());
-        user.setLogin(userDTO.getLogin());
+        user.setUsername(userDTO.getUsername());
         user.setRole(USER.getName());
 
         saveUser(user);

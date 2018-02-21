@@ -11,9 +11,26 @@
 </head>
 <body>
     <h1>Hello, welcome to your home page</h1>
-    <ol>
-        <li><a th:href="@{/eventList}">Event list</a></li>
-        <li><a th:href="@{/logout}">Log out</a></li>
-    </ol>
+
+    <h2>Your events</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+        <tr th:each="e : ${events}">
+            <td th:text="${e.name}"></td>
+            <td th:text="${e.date}"></td>
+            <td th:text="${e.location}"></td>
+            <td>
+                <a href="@{/editEvent(e.id)}">edit</a>
+            </td>
+        </tr>
+    </table>
+
+    <a th:href="@{/logout}">Log out</a>
 </body>
 </html>

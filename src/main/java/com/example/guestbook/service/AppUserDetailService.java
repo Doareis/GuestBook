@@ -27,15 +27,15 @@ public class AppUserDetailService implements UserDetailsService {
     private UserRepository repository;
 
     @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        Optional<User> userOpt = repository.findByLogin(login);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> userOpt = repository.findByUsername(username);
 
         if (!userOpt.isPresent()) {
-            throw new UsernameNotFoundException(format("User not found with login %s", login));
+            throw new UsernameNotFoundException(format("User not found with login %s", username));
         }
 
         User user = userOpt.get();
-        return new SecurityUser(user.getFirstName(), user.getLogin(), user.getPassword(), authorities(user));
+        return new SecurityUser(user.getFirstName(), user.getUsername(), user.getPassword(), authorities(user));
     }
 
     private Collection<? extends GrantedAuthority> authorities(User user) {
