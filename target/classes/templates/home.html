@@ -23,10 +23,10 @@
         </tr>
         <tr th:each="e : ${events}">
             <td th:text="${e.name}"></td>
-            <td th:text="${e.date}"></td>
+            <td th:text="${#calendars.format(e.date, 'dd/MM/yyyy')}"></td>
             <td th:text="${e.location}"></td>
             <td>
-                <a href="@{/editEvent(e.id)}">edit</a>
+                <a th:href="@{/event/edit/{eventId}(eventId=${e.id})}">edit</a>
             </td>
         </tr>
     </table>
