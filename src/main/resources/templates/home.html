@@ -10,10 +10,10 @@
           rel="stylesheet"/>
 </head>
 <body>
-    <h1>Hello, welcome to your home page</h1>
+<h1>Hello, welcome to your home page</h1>
 
-    <h2>Your events</h2>
-
+<fieldset>
+    <legend>Your events</legend>
     <table>
         <tr>
             <th>Name</th>
@@ -30,7 +30,8 @@
             </td>
         </tr>
     </table>
+</fieldset>
 
-    <a th:href="@{/logout}">Log out</a>
+<a th:href="@{/logout}">Log out</a>
 </body>
 </html>

@@ -24,7 +24,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/add/guest/{eventId}")
-    public String addGuest(Model model, @PathVariable Long eventId,  Guest guest) {
+    public String addGuest(Model model, @PathVariable Long eventId, Guest guest) {
         Event event = eventRepository.findOne(eventId);
         guest.setEvent(event);
         event.getGuests().add(guest);
