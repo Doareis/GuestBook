@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * Created by doug on 16/11/17.
+ * Created by douglas.reis on 16/11/17.
  */
 @Entity
 @Table(name = "event")

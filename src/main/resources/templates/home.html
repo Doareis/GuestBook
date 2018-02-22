@@ -26,7 +26,7 @@
             <td th:text="${#calendars.format(e.date, 'dd/MM/yyyy')}"></td>
             <td th:text="${e.location}"></td>
             <td>
-                <a th:href="@{/event/edit/{eventId}(eventId=${e.id})}">edit</a>
+                <a th:href="@{/event/edit/{eventId} (eventId=${e.id})}">edit</a>
             </td>
         </tr>
     </table>

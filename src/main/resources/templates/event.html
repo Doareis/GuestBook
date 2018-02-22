@@ -23,9 +23,13 @@
     <legend>Guests</legend>
     <tr>
         <th>Name</th>
+        <th></th>
     </tr>
     <tr th:each="guest : ${event.guests}">
         <td th:text="${guest.name}"></td>
+        <td>
+            <a th:href="@{/guest/remove/{guestId} (guestId=${guest.id})}">remove</a>
+        </td>
     </tr>
 </table>
 

@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +23,10 @@ public class Guest {
     @Column(name = "name")
     private String name;
 
+    @JoinColumn(name = "event_id")
+    @ManyToOne
+    private Event event;
+
     public Long getId() {
         return id;
     }
@@ -35,5 +41,13 @@ public class Guest {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 }
