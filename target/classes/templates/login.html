@@ -3,7 +3,8 @@
     <title tiles:fragment="title">Login</title>
 </head>
 <body>
-<div tiles:fragment="content">
+
+<h1>Guest Book</h1>
     <form action="#" name="f" th:action="@{/login}" method="post">
         <fieldset>
             <legend>Please Login</legend>
@@ -17,7 +18,8 @@
             <button type="submit" class="btn">Log in</button>
         </fieldset>
     </form>
+
     New user? Click <a th:href="@{/registration}">here</a> to register
-</div>
+
 </body>
 </html>
