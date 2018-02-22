@@ -1,5 +1,6 @@
 package com.example.guestbook.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     public Long id;
 
     @Column(name = "username")
@@ -39,8 +41,8 @@ public class User implements Serializable {
     @Column(name = "role")
     private String role;
 
-    @OneToMany
     @JoinColumn(name = "event_id")
+    @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<Event> events;
 
     public Long getId() {

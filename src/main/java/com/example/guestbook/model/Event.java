@@ -1,5 +1,9 @@
 package com.example.guestbook.model;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by doug on 16/11/17.
@@ -20,7 +22,7 @@ public class Event {
 
     @Id
     @GeneratedValue
-    @Column(name = "event_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
@@ -30,8 +32,8 @@ public class Event {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
     @JoinColumn(name = "guest_id")
+    @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<Guest> guests;
 
     @Column(name = "event_date")
@@ -65,6 +67,9 @@ public class Event {
     }
 
     public List<Guest> getGuests() {
+        if (guests == null) {
+            guests = new ArrayList<>();
+        }
         return guests;
     }
 

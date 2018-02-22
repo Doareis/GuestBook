@@ -10,6 +10,24 @@
     <p th:text="${#calendars.format(event.date, 'dd/MM/yyyy')}"></p>
 </div>
 
+<fieldset>
+    <legend>Add a guest here</legend>
+    <form th:action="@{/event/add/guest/{eventId} (eventId=${event.id})}" th:object="${guest}">
+        <label>Name</label>
+        <input type="text" th:field="*{name}" id="name"/>
+        <button type="submit">Add</button>
+    </form>
+</fieldset>
+
+<table>
+    <legend>Guests</legend>
+    <tr>
+        <th>Name</th>
+    </tr>
+    <tr th:each="guest : ${event.guests}">
+        <td th:text="${guest.name}"></td>
+    </tr>
+</table>
 
 <a th:href="@{/home}">Home</a>
 
