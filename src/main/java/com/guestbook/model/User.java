@@ -21,7 +21,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "user_id")
     public Long id;
 
     @Column(name = "username")

@@ -17,7 +17,7 @@ public class Guest {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "guest_id")
     private Long id;
 
     @Column(name = "name")

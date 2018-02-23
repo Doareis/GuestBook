@@ -36,7 +36,7 @@
                 <td th:text="${e.location}"></td>
                 <td th:text="${#lists.size(e.guests)}"></td>
                 <td>
-                    <button class="btn btn-danger" th:href="@{/event/edit/{eventId} (eventId=${e.id})}">edit</button>
+                    <a class="btn btn-danger" th:href="@{/event/edit/{eventId} (eventId=${e.id})}">edit</a>
                 </td>
             </tr>
         </table>

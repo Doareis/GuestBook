@@ -23,7 +23,7 @@ public class Event {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "event_id")
     private Long id;
 
     @Column(name = "name")
