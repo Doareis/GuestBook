@@ -4,39 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Guest List</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Hello, welcome to your home page</h1>
-
-<fieldset>
+<div class="container">
+    <div class="row">
+        <h1>Hello, welcome to your home page</h1>
+        <a class="btn btn-primary navbar-right" th:href="@{/logout}">Log out</a>
+    </div>
     <legend>Your events</legend>
-    <table>
+    <table class="table-striped table-hover col-lg-10 col-lg-offset-2">
         <tr>
             <th>Name</th>
             <th>Date</th>
             <th>Location</th>
+            <th>Num. Guests</th>
             <th></th>
         </tr>
         <tr th:each="e : ${events}">
             <td th:text="${e.name}"></td>
             <td th:text="${#calendars.format(e.date, 'dd/MM/yyyy')}"></td>
             <td th:text="${e.location}"></td>
+            <td th:text="${#lists.size(e.guests)}"></td>
             <td>
-                <a th:href="@{/event/edit/{eventId} (eventId=${e.id})}">edit</a>
+                <a class="btn btn-danger" th:href="@{/event/edit/{eventId} (eventId=${e.id})}">edit</a>
             </td>
         </tr>
     </table>
-</fieldset>
-
-<div class="container"><br/>
-    <div class="alert alert-success">
-        <strong>Success!</strong> It is working as we expected.
-    </div>
 </div>
-
-<a th:href="@{/logout}">Log out</a>
 </body>
 </html>
