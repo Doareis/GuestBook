@@ -1,30 +1,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title th:text="${event.name}"></title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<div>
-    <h2 th:text="${event.name}"></h2>
-    <p th:text="${#calendars.format(event.date, 'dd/MM/yyyy')}"></p>
+<div class="container">
+    <div class="row">
+        <h2 th:text="${event.name}"></h2>
+        <p th:text="${#calendars.format(event.date, 'dd/MM/yyyy')}"></p>
+        <a class="btn btn-primary navbar-right" th:href="@{/home}">Home</a>
+    </div>
+
+    <legend>Add a guest here</legend>
+    <form class="form-inline" th:action="@{/event/add/guest/{eventId} (eventId=${event.id})}" th:object="${guest}">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" th:field="*{name}" id="name"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
 </div>
 
-<fieldset>
-    <legend>Add a guest here</legend>
-    <form th:action="@{/event/add/guest/{eventId} (eventId=${event.id})}" th:object="${guest}">
-        <label>Name</label>
-        <input type="text" th:field="*{name}" id="name"/>
-        <button type="submit">Add</button>
-    </form>
-</fieldset>
-
-<fieldset>
-    <table>
-        <legend>Guests</legend>
+<div class="container">
+    <table class="table-striped table-hover col-lg-10 col-lg-offset-2">
+        <legend>Current guests</legend>
         <tr>
             <th>Name</th>
             <th></th>
@@ -32,13 +35,11 @@
         <tr th:each="guest : ${event.guests}">
             <td th:text="${guest.name}"></td>
             <td>
-                <a th:href="@{/guest/remove/{guestId} (guestId=${guest.id})}">remove</a>
+                <a class="btn btn-danger btn-xs" th:href="@{/guest/remove/{guestId} (guestId=${guest.id})}">X</a>
             </td>
         </tr>
     </table>
-</fieldset>
-
-<a th:href="@{/home}">Home</a>
+</div>
 
 </body>
 </html>

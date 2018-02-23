@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Created by douglas.reis on 16/11/17.
@@ -37,6 +38,7 @@ public class Event {
     private List<Guest> guests;
 
     @Column(name = "event_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
     @Column(name = "location")

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="navbar-right">
+    <a th:href="@{/home}" class="btn btn-primary">Home</a>
+</div>
+
+<div class="container">
+    <form th:action="@{/event/create}" th:object="${event}">
+        <div class="form-controller">
+            <label for="name">Name</label>
+            <input th:field="*{name}"type="text" id="name"/>
+        </div>
+
+        <div class="form-controller">
+            <label for="location">Location</label>
+            <input th:field="*{location}" type="text" id="location"/>
+        </div>
+
+        <div class="form-controller">
+            <label for="date">Date</label>
+            <input th:field="*{date}" type="date" id="date"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+
+
+</body>
+</html>

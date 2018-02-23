@@ -1,5 +1,6 @@
 package com.guestbook.model;
 
+import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -107,5 +108,12 @@ public class User implements Serializable {
 
     public void setEvents(List<Event> events) {
         this.events = events;
+    }
+
+    public void addEvent(Event event) {
+        if (events == null) {
+            events = new ArrayList<>();
+        }
+        this.getEvents().add(event);
     }
 }

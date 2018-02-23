@@ -10,29 +10,37 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <h1>Hello, welcome to your home page</h1>
-        <a class="btn btn-primary navbar-right" th:href="@{/logout}">Log out</a>
+
+    <div class="jumbotron">
+        <h1>Hello, welcome to your home page!</h1>
+        <p>Here you can manage your event's guests and more</p>
     </div>
-    <legend>Your events</legend>
-    <table class="table-striped table-hover col-lg-10 col-lg-offset-2">
-        <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Location</th>
-            <th>Num. Guests</th>
-            <th></th>
-        </tr>
-        <tr th:each="e : ${events}">
-            <td th:text="${e.name}"></td>
-            <td th:text="${#calendars.format(e.date, 'dd/MM/yyyy')}"></td>
-            <td th:text="${e.location}"></td>
-            <td th:text="${#lists.size(e.guests)}"></td>
-            <td>
-                <a class="btn btn-danger" th:href="@{/event/edit/{eventId} (eventId=${e.id})}">edit</a>
-            </td>
-        </tr>
-    </table>
+    <div class="navbar-right">
+        <a class="btn btn-primary" th:href="@{/event/new}">New event</a>
+        <a class="btn btn-primary" th:href="@{/logout}">Log out</a>
+    </div>
+
+    <div class="container">
+        <legend>Your events</legend>
+        <table class="table-striped table-hover col-lg-10 col-lg-offset-2">
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Num. Guests</th>
+                <th></th>
+            </tr>
+            <tr th:each="e : ${user.events}">
+                <td th:text="${e.name}"></td>
+                <td th:text="${#calendars.format(e.date, 'dd/MM/yyyy')}"></td>
+                <td th:text="${e.location}"></td>
+                <td th:text="${#lists.size(e.guests)}"></td>
+                <td>
+                    <button class="btn btn-danger" th:href="@{/event/edit/{eventId} (eventId=${e.id})}">edit</button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>

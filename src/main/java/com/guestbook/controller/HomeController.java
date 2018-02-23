@@ -1,6 +1,8 @@
 package com.guestbook.controller;
 
+import com.guestbook.model.User;
 import com.guestbook.repository.EventRepository;
+import com.guestbook.repository.UserRepository;
 import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @Autowired
-    private EventRepository repository;
+    private UserRepository repository;
 
     @RequestMapping(name = "/home")
     public String home(Model model, Principal principal) {
-        model.addAttribute("events", repository.findAllBy(principal.getName()));
-        //model.addAttribute("events", repository.findAll());
+        User user = repository.findByUsername(principal.getName()).get();
+        model.addAttribute("user", user);
         return "home";
     }
 
